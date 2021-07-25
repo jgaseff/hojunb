@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ERROR PAGE</title>
+</head>
+<body>
+	{% if error_code == 'ERROR_FIELDS' %}
+
+	    ERROR: Fields used to optimize cannot be used to reach linear programming solution
+	    <br> Check that:
+	    <br>            1. Value for "Weighted-Average Duration" is in [3, 7]
+	    <br>            2. Value for "Total Weight Class 2" is in [0.2, 0.5]
+
+    {% elif error_code == 'ERROR_SUMMARY'%}
+
+    	ERROR: Cannot calculate summary on empty database after filtering.
+
+    {% elif error_code == 'ERROR_SOLVE' %}
+
+		ERROR: Cannot solve linear programming problem with current fields 
+    	<br>Status of PuLP solve: {{ status }} 
+	    <br><a href = "https://coin-or.github.io/pulp/technical/constants.html?highlight={{ status }}">PuLP documentation on status<a>
+	    <br><a href = "https://benalexkeen.com/linear-programming-with-python-and-pulp-part-2/">What does this status mean?<a>
+
+	{% endif %}
+</body>
+</html>

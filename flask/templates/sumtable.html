@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Summary Table</title>
+    <link rel="stylesheet" href="/static/style.css"/>
+</head>
+<body>
+
+  <h1>Summary</h1>
+
+  <div class = "column" align="left">
+    <!-- summary table -->
+    <form method="post" action="/">
+      <table style="width:200px">
+        <tr class="table__header">
+          <td></td>
+          <td class="table__cell">YTM</td>
+          <td class="table__cell">OAS</td>
+        </tr>
+        <tr class="table__row">
+          <td>Minimum</td>
+          <td class="table__cell"><b>{{ min_YTM }}</b></td>
+          <td class="table__cell"><b>{{ min_OAS }}</b></td>
+        </tr>
+        <tr class="table__row">
+          <td>Average</td>
+          <td class="table__cell"><b>{{ avg_YTM }}</b></td>
+          <td class="table__cell"><b>{{ avg_OAS }}</b></td>
+        </tr>
+        <tr class="table__row">
+          <td>Median</td>
+          <td class="table__cell"><b>{{ med_YTM }}</b></td>
+          <td class="table__cell"><b>{{ med_OAS }}</b></td>
+        </tr>
+        <tr class="table__row">
+          <td>Maximum</td>
+          <td class="table__cell"><b>{{ max_YTM }}</b></td>
+          <td class="table__cell"><b>{{ max_OAS }}</b></td>
+        </tr>
+      </table>
+    </form>
+    &emsp;
+
+    <div class="row">
+      <label for="MV">MV: </label>
+        <b>{{ MV }}</b>
+    </div>
+  </div>
+
+    
+</body>
+</html>

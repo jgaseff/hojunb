@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>home</title>
+    <link rel="stylesheet" href="/static/style.css"/>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  
+
+</head>
+<body>
+  <div class="px-5 bg-white mt-5">
+    <h1>Optimal Portfolio Constructor</h1>
+  </div>
+  <!-- <div class="row"> -->
+    <!-- <table style="width:1280px" align="left">
+      <colgroup>
+        <col span="1" style="width:20%">
+        <col span="1" style="width:80%">
+      </colgroup>
+
+      <tbody>
+        <tr class="table__header">
+          <td class="table__cell"><b>Function</b></td>
+          <td class="table__cell"><b>What it does</b></td>
+        </tr>
+        <tr class="table__row">
+          <td>Reset</td>
+          <td class="table__cell">Click to clear all dropdown menus and 
+                                  text fields</td>
+        </tr>
+        <tr class="table__row">
+          <td>Filter</td>
+          <td class="table__cell">Click to look at the filtered database with
+                                  the selected fields from the dropdown menus:
+                                  "Class 1~4", "Rating", "Duration", and "Date". If the 
+                                  option is left empty, then that category will not
+                                  be used to filter the database.</td>
+        </tr>
+        <tr class="table__row">
+          <td>Summary</td>
+          <td class="table__cell">Click to look at a table containing the following:
+                                  maximum OAS and YTM, minimum OAS and YTM,
+                                  average OAS and YTM, and median OAS and YTM  
+                                  as well as the sum of all MV from the database. 
+                                  <br>
+                                  <br>
+                                  If any fields described in the "Filter" option are chosen, 
+                                  then the values will be calculated from the filtered database.</td>
+        </tr>
+        <tr class="table__row">
+          <td>Max YTM / Max OAS</td>
+          <td class="table__cell">Click the corresponding buttons to get the portfolio (a table)
+                                  containing the optimal weights of each bond that maximizes 
+                                  the chosen value. The fields: "Total Weight Class 2", "Weighted-Average Duration",
+                                  and "Upper Bound" are used as the optimization constraints to
+                                  calculate the weights that would give the maximum value of the selected value (YTM or OAS). 
+                                  Any bond that has weight of 0 will be left out of the resulting table.
+                                  <br>
+                                  <br>
+                                  The "Total Weight Class 2" field must have values between 0.2 and 0.5. <br>
+                                  The "Weighted-Average Duration" field must have values between 3 and 7 (decimal values allowed). <br>
+                                  If these fields are input incorrectly, an error page describing the constraints will be shown.
+                                  <br>
+                                  <br>
+                                  If an optimal solution cannot be reached, an error page stating that an optimal solution could not be
+                                  reached will be shown.
+                                  <br>
+                                  <br>
+                                  If any fields described in the "Filter" option are chosen, 
+                                  then the portfolio will be calculated from the filtered database.</td>
+        </tr>
+      </tbody>
+    </table> -->
+  <!-- </div> -->
+
+
+  <!-- classes dropdown -->
+  <div class="row m-5">
+  <div class="card text-white bg-info mb-3 border-secondary mb-3" style="width: 35rem;">
+    <div class="card-body">
+      <h5 class="card-title">Filters</h5>
+      <p class="card-text">Use the dropdowns to filter the database for various functions</p>
+      <!-- <a href="#" class="btn btn-primary">Button</a> -->
+        &emsp;
+        <div class="row">
+        <div class="px-5 bg-info">
+          <form method="post" action = "/">
+            <label for="CLASS1">Class 1:</label>
+            <select name="class_1">
+              {% for c in class1 %}
+                <option value="{{c}}">{{c}}</option>
+              {% endfor %}
+            </select>
+
+            <!-- <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Dropdown button
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                {% for c in class1 %}
+                  <a class="dropdown-item" href="#">{{c}}</a>
+                {% endfor %}
+              </div>
+            </div> -->
+
+
+        </div>
+        </div>
+        &emsp;
+        <div class="row">
+        <div class="px-5 bg-info">
+          <label for="CLASS2">Class 2:</label>
+          <form method="post" action = "/">
+            <select name="class_2">
+              {% for c in class2 %}
+                <option value="{{c}}">{{c}}</option>
+              {% endfor %}
+            </select>
+        </div>
+        </div>
+        &emsp;
+        <div class="row">
+        <div class="px-5 bg-info">
+          <label for="CLASS3">Class 3:</label>
+          <form method="post" action = "/">
+            <select name="class_3">
+              {% for c in class3 %}
+                <option value="{{c}}">{{c}}</option>
+              {% endfor %}
+            </select>
+        </div>
+        </div>
+        &emsp;
+        <div class="row">
+        <div class="px-5 bg-info">
+          <label for="CLASS4">Class 4:</label>
+          <form method="post" action = "/">
+            <select name="class_4">
+              {% for c in class4 %}
+                <option value="{{c}}">{{c}}</option>
+              {% endfor %}
+            </select>
+        </div>
+        </div>
+        &emsp;
+        <!-- rating dropdown -->
+        <div class="row">
+        <div class="px-5 bg-info">
+        <label for="RATING">Rating:</label>
+        <form method="post" action = "/">
+          <select name="rating">
+            {% for r in rating %}
+              <option value="{{r}}">{{r}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        </div>
+        &emsp;
+        <!-- duration textbox -->
+        <div class="row">
+        <div class="px-5 bg-info">
+        <label for="DURATION">DURATION:</label>
+        <form method="post" action = "/">
+          <select name="duration">
+            {% for d in duration %}
+              <option value="{{d}}">{{d}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        </div>
+        &emsp;
+        <!-- date dropdown -->
+        <div class="row">
+        <div class="px-5 bg-info">
+        <label for="Date">Date:</label>
+        <form method="post" action = "/">
+          <select name="date">
+            {% for d in date %}
+              <option value="{{d}}">{{d}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        </div>
+
+
+    </div>
+  </div>
+
+
+  <!-- fields for optimization -->
+  <div class="card text-white bg-secondary mb-3" border-info mb-3" style="width: 30rem;">
+    <div class="card-body">
+      <h5 class="card-title">Optimization Fields</h5>
+      <p class="card-text">Fill in the fields below to set optimization constraints</p>
+        <div class="column">
+          &emsp;
+          <div class="row">
+          <div class="px-5 bg-secondary">
+            <label for="TOTAL_WEIGHT_CLASS_2">Total Weight Class 2 ([0.2, 0.5]):</label>
+            <form method="post" action="/">
+              <input type="text" id="total_weight_class_2" name="total_weight_class_2">
+          </div>
+          </div>
+          &emsp;
+          <div class="row">
+          <div class="px-5 bg-secondary">
+            <label for="WEIGHTED_AVERAGE_DURATION">Weighted-Average Duration ([3, 7]):</label>
+            <form method="post" action="/">
+              <input type="text" id="weighted_average_duration" name="weighted_average_duration">
+          </div>
+          </div>
+          &emsp;
+          <div class="row">
+          <div class="px-5 bg-secondary">
+            <label for="UPPERBOUND">Upper Bound:</label>
+            <form method="post" action = "/">
+              <select name="upper_bound">
+                {% for b in upper_bound %}
+                  <option value="{{b}}">{{b}}</option>
+                {% endfor %}
+              </select>
+          </div>
+          </div>
+        </div>
+
+    </div>
+  </div>
+  
+
+  <!-- buttons -->
+  <div class="card text-white bg-success mb-3 border-success mb-3" style="width: 25rem;">
+    <div class="card-body">
+      <h5 class="card-title">Functions</h5>
+      <p class="card-text">Click the buttons below to analyze the database</p>
+        <div class="column" align="right">
+          &emsp;
+          <!-- reset button -->
+          <div class="row px-5">
+            <form method="post" action = "/">
+              <input type="submit" name="reset__button" value="Reset"></button>
+          </div>
+          &emsp;
+          <!-- filter button -->
+          <div class="row px-5">
+            <form method="post" action = "/">
+              <input type="submit" name="filter__button" value="Filter"></button>
+          </div>
+          &emsp;
+          <!-- summary button -->
+          <div class="row px-5">
+            <form method="post" action = "/">
+              <input type="submit" name="summary__button" value="Summary"></button>
+          </div>
+          &emsp;
+          <!-- max YTM button -->
+          <div class="row px-5">
+            <form method="post" action = "/">
+              <input type="submit" name="YTM__button" value="Max YTM"></button>
+          </div>
+          &emsp;  
+          <!-- max OAS button -->
+          <div class="row px-5">
+            <form method="post" action = "/">
+              <input type="submit" name="OAS__button" value="Max OAS"></button>
+          </div>  
+        </div>
+    </div>  
+  </div>
+
+
+</body>
+</html>
